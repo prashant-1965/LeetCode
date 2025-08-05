@@ -1,3 +1,6 @@
+// problem link
+https://leetcode.com/problems/min-cost-climbing-stairs/description/
+
 class Solution {
     public int minCostClimbingStairs(int[] nums) {
         int size=nums.length;
@@ -21,4 +24,5 @@ class Solution {
 //         if(dp[idx]!=null) return dp[idx];
 //         return dp[idx]= nums[idx]+Math.min(dfs(idx+1,nums,dp),dfs(idx+2,nums,dp));
 //     }
+
 // }
