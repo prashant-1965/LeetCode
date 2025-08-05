@@ -1,0 +1,33 @@
+// User function Template for Java
+//Method 2
+class Solution {
+    // Function to count the number of ways in which frog can reach the top.
+    static int countWays(int n) {
+        if(n==1) return 1;
+        if(n==2) return 2;
+        int val1=0,val2=1,val3=1,temp;
+        for(int i=3;i<=n;i++){
+            temp = val1+val2+val3;
+            val1 = val2;val2=val3;val3=temp;
+        }
+        return val1+val2+val3;
+    }
+}
+
+// Method 1
+
+// User function Template for Java
+// class Solution {
+//     // Function to count the number of ways in which frog can reach the top.
+//     public static Integer[] dp;
+//     static int countWays(int n) {
+//         dp = new Integer[n+1];
+//         return dfs(n);
+//     }
+//     public static int dfs(int n) {
+//         if(n<0) return 0;
+//         if(n==0) return 1;
+//         if(dp[n]!=null)return dp[n];
+//         return dp[n]= dfs(n-1)+dfs(n-2)+dfs(n-3);
+//     }
+// }
