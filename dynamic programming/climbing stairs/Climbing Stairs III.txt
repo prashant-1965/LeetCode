@@ -1,0 +1,24 @@
+class Solution {
+    public int minCostClimbingStairs(int[] nums) {
+        int size=nums.length;
+        int val1 = nums[size-2], val2 =nums[size-1],temp;
+        for(int i=size-3;i>=0;i--){
+            temp = nums[i]+Math.min(val1,val2);
+            val2 = val1;
+            val1 =  temp;
+        }
+        return Math.min(val1,val2);
+    }
+}
+
+// class Solution {
+//     public int minCostClimbingStairs(int[] nums) {
+//         int size=nums.length;
+//         return Math.min(dfs(0,nums, new Integer[size]),dfs(1,nums, new Integer[size]));
+//     }
+//     public static int dfs(int idx, int[] nums, Integer[] dp){
+//         if(idx==nums.length-1 || idx==nums.length-2) return nums[idx];
+//         if(dp[idx]!=null) return dp[idx];
+//         return dp[idx]= nums[idx]+Math.min(dfs(idx+1,nums,dp),dfs(idx+2,nums,dp));
+//     }
+// }
