@@ -1,0 +1,52 @@
+// Method 3
+class Solution {
+    public boolean canJump(int[] nums) {
+        int range = 0;
+        for(int i=0;i<nums.length;i++){
+            if(i+nums[i]>range){
+                range = i+nums[i];
+            }
+            if(range>=nums.length-1){
+                return true;
+            }
+            if(nums[i]==0 && range==i){
+                return false;
+            }
+        }
+        return false;
+    }
+}
+
+// Method 2
+// class Solution {
+//     static Boolean[] dp;
+//     public boolean canJump(int[] nums) {
+//         dp = new Boolean[nums.length];
+//         return dfs(0,nums);
+//     }
+//     public static boolean dfs(int index, int[] nums){
+//         if(index>=nums.length-1) return true;
+//         if(dp[index]!=null) return dp[index];
+//         for(int i=nums[index];i>0;i--){
+//             boolean temp = dfs(index+i,nums);
+//             dp[index] = temp;
+//             if(temp) return temp;
+//         }
+//         return false;
+//     }
+// }
+
+// Mathod 1
+// class Solution {
+//     public boolean canJump(int[] nums) {
+//         return dfs(0,nums);
+//     }
+//     public static boolean dfs(int index, int[] nums){
+//         if(index>=nums.length-1) return true;
+//         for(int i=nums[index];i>0;i--){
+//             boolean temp = dfs(index+i,nums);
+//             if(temp) return temp;
+//         }
+//         return false;
+//     }
+// }
