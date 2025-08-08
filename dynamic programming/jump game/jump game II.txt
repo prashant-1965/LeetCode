@@ -1,0 +1,30 @@
+// Method 2
+class Solution {
+    public int jump(int[] nums) {
+        int size = nums.length; 
+        int[] dp = new int[size];
+        Arrays.fill(dp,Integer.MAX_VALUE);
+        dp[size-1] = 0;
+        for(int i=size-2;i>=0;i--){
+            for(int j=1;i+j<size && j<=nums[i];j++){
+                if(dp[i+j]!=Integer.MAX_VALUE) dp[i] = Math.min(dp[i],1+dp[i+j]);
+            }
+        }
+        return dp[0];
+    }
+}
+
+// Method 1
+// class Solution {
+//     public int jump(int[] nums) {
+//         return dfs(0,nums);
+//     }
+//     public static int dfs(int idx, int[] nums){
+//         if(idx>=nums.length-1) return 0;
+//         if(nums[idx]==0) return 1001;
+//         int jump=0;
+//         for(int i=1;i<=nums[idx];i++){
+//             jump+=dfs(idx+i,nums);
+//         }
+//     }
+// }
