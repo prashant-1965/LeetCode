@@ -1,26 +1,23 @@
 class Solution {
     public static boolean[][] track;
-    public static Queue<int[]> q;
-    public static char[][] nums;
     public static int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
     public int numIslands(char[][] nums) {
         int cnt=0;
-        this.nums=nums;
         this.track = new boolean[nums.length][nums[0].length];
-        this.q = new LinkedList<>();
+        Queue<int[]> q = new LinkedList<>();
         for(int i=0;i<nums.length;i++){
             for(int j=0;j<nums[0].length;j++){
                 if(nums[i][j]=='1' && !track[i][j]){
                     cnt++;
                     q.add(new int[]{i,j});
                     track[i][j]=true;
-                    bfs();
+                    bfs(nums,q);
                 }
             }
         }
         return cnt;
     }
-    public static void bfs(){
+    public static void bfs(char[][] nums, Queue<int[]> q){
         while (!q.isEmpty()) {
             int[] cur = q.poll();
             for (int[] d : dirs) {
