@@ -7,11 +7,11 @@ class Solution {
         int cnt=0;
         this.nums=nums;
         this.track = new boolean[nums.length][nums[0].length];
+        this.q = new LinkedList<>();
         for(int i=0;i<nums.length;i++){
             for(int j=0;j<nums[0].length;j++){
                 if(nums[i][j]=='1' && !track[i][j]){
                     cnt++;
-                    this.q = new LinkedList<>();
                     q.add(new int[]{i,j});
                     track[i][j]=true;
                     bfs();
