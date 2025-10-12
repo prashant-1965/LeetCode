@@ -3,9 +3,9 @@ class Solution {
     public int longestIncreasingPath(int[][] nums) {
         int ans=0;
         this.dp = new Integer[nums.length][nums[0].length];
+        boolean[][] track = new boolean[nums.length][nums[0].length];
         for(int i=0;i<nums.length;i++){
             for(int j=0;j<nums[0].length;j++){
-                boolean[][] track = new boolean[nums.length][nums[0].length];
                 ans = Math.max(ans,dfs(i,j,-1,track,nums));
             }
         }
