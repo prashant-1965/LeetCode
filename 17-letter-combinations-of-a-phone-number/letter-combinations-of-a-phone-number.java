@@ -16,12 +16,6 @@ class Solution {
                 lt.get(i).add(s.charAt(j));
             }
         }
-        // for(int i=0;i<lt.size();i++){
-        //     for(int j=0;j<lt.get(i).size();j++){
-        //         System.out.print(lt.get(i).get(j)+" ");
-        //     }
-        //     System.out.println();
-        // }
         this.ans = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         dfs(0,0,new StringBuilder());
@@ -29,12 +23,9 @@ class Solution {
     }
     public static void dfs(int row, int col, StringBuilder sb){
         if(row==lt.size()){
-            ans.add(sb.toString());
-            return;
+            ans.add(sb.toString()); return;
         }
-        if(col==lt.get(row).size()){
-            return;
-        }
+        if(col==lt.get(row).size())return;
         sb.append(lt.get(row).get(col));
         dfs(row+1,0,sb);
         sb.deleteCharAt(sb.length() - 1);
