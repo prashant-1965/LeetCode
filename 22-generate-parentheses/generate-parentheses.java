@@ -14,7 +14,7 @@ class Solution {
             dfs(op+1,clo,n,sb);
             sb.deleteCharAt(sb.length()-1);
         }
-        if(op>clo && clo<n){
+        if(op>clo){
             sb.append(')');
             dfs(op,clo+1,n,sb);
             sb.deleteCharAt(sb.length()-1);
