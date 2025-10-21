@@ -28,7 +28,6 @@ class Solution {
                 st.push(Integer.toString(val1));
             }
         }
-        String ans = st.pop();
-        return Integer.parseInt(ans);
+        return Integer.parseInt(st.pop());
     }
 }
