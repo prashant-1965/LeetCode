@@ -1,11 +1,10 @@
 class Solution {
-    public List<List<String>> ans;
     public List<List<String>> partition(String s) {
-        this.ans=  new ArrayList<>();
-        dfs(0,s,new ArrayList<>());
+        List<List<String>> ans =  new ArrayList<>();
+        dfs(0,s,new ArrayList<>(),ans);
         return ans;
     }
-    public void dfs(int idx, String s, List<String> lt){
+    public void dfs(int idx, String s, List<String> lt, List<List<String>> ans){
         if (idx == s.length()) {
             ans.add(new ArrayList<>(lt));
             return;
@@ -14,7 +13,7 @@ class Solution {
             String sub = s.substring(idx, i + 1);
             if (isValid(sub)) {
                 lt.add(sub);
-                dfs(i + 1, s, lt);
+                dfs(i + 1, s, lt,ans);
                 lt.remove(lt.size() - 1);
             }
         }
