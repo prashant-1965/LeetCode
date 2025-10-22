@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> ans;
-    public Set<String> set;
+    public Set<List<Integer>> set;
     public List<List<Integer>> findSubsequences(int[] nums) {
         this.ans = new ArrayList<>();
         this.set = new HashSet<>();
@@ -9,12 +9,9 @@ class Solution {
     }
     public void dfs(int idx, int[] nums, List<Integer> lt, int parent){
         if(idx==nums.length){
-            StringBuilder sb = new StringBuilder();
-            for(int i:lt)sb.append(i).append(":");
-            String s = sb.toString();
-            if(lt.size()>1 && !set.contains(s)){
+            if(lt.size()>1 && !set.contains(lt)){
                 ans.add(new ArrayList<>(lt));
-                set.add(s);
+                set.add(new ArrayList<>(lt));
             }
             return;
         }
