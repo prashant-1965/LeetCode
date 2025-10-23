@@ -1,28 +1,28 @@
 class Solution {
+    public List<List<String>> ans;
     public List<List<String>> partition(String s) {
-        List<List<String>> ans =  new ArrayList<>();
-        dfs(0,s,new ArrayList<>(),ans);
+        this.ans = new ArrayList<>();
+        dfs(0,s,new ArrayList<>());
         return ans;
     }
-    public void dfs(int idx, String s, List<String> lt, List<List<String>> ans){
-        if (idx == s.length()) {
-            ans.add(new ArrayList<>(lt));
-            return;
+    public void dfs(int start, String s, List<String> lt){
+        if(start==s.length()){
+            ans.add(new ArrayList<>(lt)); return;
         }
-        for(int i=idx;i<s.length();i++){
-            String sub = s.substring(idx, i + 1);
-            if (isValid(sub)) {
-                lt.add(sub);
-                dfs(i + 1, s, lt,ans);
-                lt.remove(lt.size() - 1);
+        for(int i=start;i<s.length();i++){
+            String str = s.substring(start,i+1);
+            if(isPalindrome(str)){
+                lt.add(str);
+                dfs(i+1,s,lt);
+                lt.removeLast();
             }
         }
     }
-    public boolean isValid(String s){
-        int low=0,high=s.length()-1;
+    public boolean isPalindrome(String str){
+        int low=0,high=str.length()-1;
         while(low<high){
-            if(s.charAt(low)!=s.charAt(high)) return false;
-            low++;high--;
+            if(str.charAt(low)!=str.charAt(high)) return false;
+            low++; high--;
         }
         return true;
     }
