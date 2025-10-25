@@ -20,7 +20,10 @@ class Solution {
     }
     public boolean valid(String s){
         if(s.charAt(0)=='0' || s.length()>2) return false;
-        int num = Integer.parseInt(s);
+        int num =0;
+        for(int i=0;i<s.length();i++){
+            num = num*10 + s.charAt(i)-'0';
+        }
         if(num>26) return false;
         return true;
     }
