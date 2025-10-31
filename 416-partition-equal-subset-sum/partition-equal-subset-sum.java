@@ -4,8 +4,9 @@ class Solution {
         int sum=0;
         for(int i:nums)sum+=i;
         if(sum%2==1)return false;
-        this.dp = new Boolean[nums.length][(sum/2)+1];
-        return dfs(0,nums,sum/2);
+        sum/=2;
+        this.dp = new Boolean[nums.length][sum+1];
+        return dfs(0,nums,sum);
     }
     public boolean dfs(int idx, int[] nums, int k){
         if(k==0) return true;
