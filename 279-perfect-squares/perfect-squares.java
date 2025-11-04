@@ -1,23 +1,16 @@
 class Solution {
     public Integer[][] dp;
     public int numSquares(int n) {
-        List<Integer> lt = new ArrayList<>();
-        int i=1;
-        while(i*i<=n){
-            lt.add(i*i);
-            i++;
-        }
-        this.dp = new Integer[lt.size()][n+1];
-        return dfs(0,n,lt);
+        this.dp = new Integer[(int)Math.floor(Math.sqrt(n))+1][n+1];
+        return dfs(1,n);
     }
-    public int dfs(int idx, int n, List<Integer> lt){
+    public int dfs(int i, int n){
         if(n==0) return 0;
-        if(idx==lt.size() ||  n<lt.get(idx)) return 10001;
-        if(dp[idx][n]!=null) return dp[idx][n];
-        int take = dfs(idx,n-lt.get(idx),lt);
-        int skip = dfs(idx+1,n,lt);
+        if(n-i*i<0) return 10001;
+        if(dp[i][n]!=null) return dp[i][n];
+        int take = dfs(i,n-i*i);
+        int skip = dfs(i+1,n);
         int val = Math.min(1+take,skip);
-        // System.out.println(val);
-       return dp[idx][n] = val;
+       return dp[i][n] = val;
     }
 }
