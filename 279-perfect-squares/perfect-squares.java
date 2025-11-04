@@ -8,9 +8,6 @@ class Solution {
         if(n==0) return 0;
         if(n-i*i<0) return 10001;
         if(dp[i][n]!=null) return dp[i][n];
-        int take = dfs(i,n-i*i);
-        int skip = dfs(i+1,n);
-        int val = Math.min(1+take,skip);
-       return dp[i][n] = val;
+       return dp[i][n] = Math.min(1+dfs(i,n-i*i),dfs(i+1,n));
     }
 }
