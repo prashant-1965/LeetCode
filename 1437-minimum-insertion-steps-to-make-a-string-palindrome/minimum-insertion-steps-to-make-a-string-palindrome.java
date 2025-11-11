@@ -1,7 +1,8 @@
 class Solution {
     Integer[][] dp;
     public int minInsertions(String s) {
-        String t = reverse(s);
+        StringBuilder sb = new StringBuilder(s);
+        String t = sb.reverse().toString();
         this.dp = new Integer[s.length()][s.length()];
         int len = dfs(0,0,s,t);
         return s.length()-len;
@@ -16,10 +17,5 @@ class Solution {
         int skip1 = dfs(idx1+1,idx2,s,t);
         int skip2 = dfs(idx1,idx2+1,s,t);
         return dp[idx1][idx2] = Math.max(take,Math.max(skip1,skip2));
-    }
-    public String reverse(String s){
-        StringBuilder sb = new StringBuilder();
-        for(int i=s.length()-1;i>=0;i--)sb.append(s.charAt(i));
-        return sb.toString();
     }
 }
